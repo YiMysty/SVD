@@ -48,6 +48,18 @@ public class configurationReader{
 	public String getProcessedMovieMapFileName(){
 		return property.getProperty("processedMapFile");
 	}
+	public int getDimension(){
+		return Integer.parseInt(property.getProperty("dimension"));
+	}
+	public int getIterationTimes(){
+		return Integer.parseInt(property.getProperty("iterationTimes"));
+	}
+	public float getLearningRate(){
+		return Float.parseFloat(property.getProperty("learningrate"));
+	}
+	public float getk(){
+		return Float.parseFloat(property.getProperty("k"));
+	}
 }
 }
 

@@ -8,11 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
-import model.User;
+import entity.User;
+import entity.UserData;
 
 public class DataProcessor {
 	public void DataTrimAndRestore() throws IOException{
@@ -43,13 +45,6 @@ public class DataProcessor {
 				String mid =   split[1];
 				String score = split[2];
 				User u = new User(uid,mid,score);
-				if(movieMap.containsKey(mid)){
-					u.setMovieId(movieMap.get(mid));
-				}else{
-					u.setMovieId(movieId);
-					movieMap.put(mid, movieId);
-					movieId+=1;
-				}
 				if(map.containsKey(uid)){
 					map.get(uid).add(u);
 				}else{
@@ -65,6 +60,14 @@ public class DataProcessor {
 			System.out.println("finished "+i+" user");
 			String uid = String.valueOf(i);
 			for(User u:map.get(uid)){
+				String mid = u.getMovieId()+"";
+				if(movieMap.containsKey(mid)){
+					u.setMovieId(movieMap.get(mid));
+				}else{
+					u.setMovieId(movieId);
+					movieMap.put(mid, movieId);
+					movieId+=1;
+				}
 				writeContent+=u.toString()+"\n";
 			}
 		}
@@ -89,5 +92,32 @@ public class DataProcessor {
 		bw.close();
 		System.out.println("finished writing...");
 		reader.close();
+	}
+	//load the data from the processed file..
+	public UserData DataLoader() throws IOException{
+		ConfigReader reader = new ConfigReader();
+		BufferedReader br = new BufferedReader(new FileReader(reader.getConfigurationReader().getProcessedFileName()));
+		String line = "";
+		HashSet<Integer> userSet = new HashSet<Integer>();
+		HashSet<Integer> movieSet = new HashSet<Integer>();
+		float maxScore = 1-Float.MAX_VALUE;
+		float minScore = Float.MAX_VALUE;
+		List<User> user = new ArrayList<User>();
+		System.out.println("start reading data");
+		while((line=br.readLine())!=null){
+			User u = new User(line);
+			if(u.getScore()>maxScore){
+				maxScore = u.getScore();
+			}if(u.getScore()<minScore){
+				minScore = u.getScore();
+			}
+			userSet.add(u.getId());
+			movieSet.add(u.getMovieId());
+			user.add(u);
+		}
+		UserData userdata = new UserData(userSet.size(), movieSet.size(), maxScore, minScore, user);
+		br.close();
+		reader.close();
+		return userdata;
 	}
 }
