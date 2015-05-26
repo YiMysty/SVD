@@ -60,6 +60,12 @@ public class configurationReader{
 	public float getk(){
 		return Float.parseFloat(property.getProperty("k"));
 	}
+	public int getFoldsNum(){
+		return Integer.parseInt(property.getProperty("foldsNum"));
+	}
+	public float getThreshold(){
+		return Float.parseFloat(property.getProperty("threshold"));
+	}
 }
 }
 

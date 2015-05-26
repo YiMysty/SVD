@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
-import entity.User;
-import entity.UserData;
+import entity.Record;
+import entity.RecordContainer;
 
 public class DataProcessor {
 	public void DataTrimAndRestore() throws IOException{
@@ -28,7 +28,7 @@ public class DataProcessor {
 			e.printStackTrace();
 		}
 		String line = null;
-		HashMap<String,List<User>> map = new HashMap<String,List<User>>();
+		HashMap<String,List<Record>> map = new HashMap<String,List<Record>>();
 		HashMap<String,Integer>    movieMap = new HashMap<String,Integer>();
 		int movieId = 0;
 		int count = 0;
@@ -44,11 +44,11 @@ public class DataProcessor {
 				String uid =   split[0];
 				String mid =   split[1];
 				String score = split[2];
-				User u = new User(uid,mid,score);
+				Record u = new Record(uid,mid,score);
 				if(map.containsKey(uid)){
 					map.get(uid).add(u);
 				}else{
-					map.put(uid, new ArrayList<User>());
+					map.put(uid, new ArrayList<Record>());
 					map.get(uid).add(u);
 				}
 			}
@@ -59,7 +59,7 @@ public class DataProcessor {
 		for(int i=0;i<reader.getConfigurationReader().getTotalUser();i++){
 			System.out.println("finished "+i+" user");
 			String uid = String.valueOf(i);
-			for(User u:map.get(uid)){
+			for(Record u:map.get(uid)){
 				String mid = u.getMovieId()+"";
 				if(movieMap.containsKey(mid)){
 					u.setMovieId(movieMap.get(mid));
@@ -94,7 +94,7 @@ public class DataProcessor {
 		reader.close();
 	}
 	//load the data from the processed file..
-	public UserData DataLoader() throws IOException{
+	public RecordContainer DataLoader() throws IOException{
 		ConfigReader reader = new ConfigReader();
 		BufferedReader br = new BufferedReader(new FileReader(reader.getConfigurationReader().getProcessedFileName()));
 		String line = "";
@@ -102,10 +102,12 @@ public class DataProcessor {
 		HashSet<Integer> movieSet = new HashSet<Integer>();
 		float maxScore = 1-Float.MAX_VALUE;
 		float minScore = Float.MAX_VALUE;
-		List<User> user = new ArrayList<User>();
+		float averageScore = 0;
+		int totalPeople = 0;
+		List<Record> user = new ArrayList<Record>();
 		System.out.println("start reading data");
 		while((line=br.readLine())!=null){
-			User u = new User(line);
+			Record u = new Record(line);
 			if(u.getScore()>maxScore){
 				maxScore = u.getScore();
 			}if(u.getScore()<minScore){
@@ -114,8 +116,10 @@ public class DataProcessor {
 			userSet.add(u.getId());
 			movieSet.add(u.getMovieId());
 			user.add(u);
+			averageScore+=u.getScore();
+			totalPeople+=1;
 		}
-		UserData userdata = new UserData(userSet.size(), movieSet.size(), maxScore, minScore, user);
+		RecordContainer userdata = new RecordContainer(userSet.size(), movieSet.size(), maxScore, minScore, user,averageScore/(float)totalPeople);
 		br.close();
 		reader.close();
 		return userdata;

@@ -4,10 +4,10 @@ import java.io.IOException;
 
 import reader.ConfigReader;
 import reader.DataProcessor;
-import entity.User;
-import entity.UserData;
+import entity.Record;
+import entity.RecordContainer;
 
-public class SVD {
+public class PlainSVD {
 	float[][] userMatrix;
 	float[][] movieMatrix;
 	float[][] scoreMatrix;
@@ -16,16 +16,18 @@ public class SVD {
 	float maxScore = 0.0f;
 	float minScore = 0.0f;
 	static float small = 0.0000001f;
-	public void loadData(){
+	public void loadData(RecordContainer train){
 		System.out.println("initialize the score matrix.....");
 		ConfigReader reader = new ConfigReader();
 		DataProcessor processor = new DataProcessor();
-		UserData data = null;
-		try {
-			data = processor.DataLoader();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		RecordContainer data = train;
+		if(data==null){
+			try {
+				data = processor.DataLoader();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		userMatrix = new float[data.getUserNum()][reader.getConfigurationReader().getDimension()];
 		userdiff   = new float[data.getUserNum()][reader.getConfigurationReader().getDimension()];
@@ -39,7 +41,7 @@ public class SVD {
 			for(int j=0;j<scoreMatrix[0].length;j++){
 				scoreMatrix[i][j] = 0.0f;
 			}
-		User u = null;
+		Record u = null;
 		while((u=data.getNext())!=null){
 			scoreMatrix[u.getId()][u.getMovieId()] = u.getScore();
 		}
