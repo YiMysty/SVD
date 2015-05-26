@@ -6,4 +6,4 @@ Developed by Java and Python seperately.
 
 The 10M txt file...
 
-It is the uid, movieId, score separately. The mapping file is too big, I just keep it at local.. Just try this one is fine.. It contains 5000 user.
+It is the uid, movieId, score separately. The mapping file is too big, I just keep it at local.. Just try this one is fine.. It contains 1500 user.
