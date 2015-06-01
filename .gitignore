@@ -6,17 +6,3 @@
 .project
 
 .classpath
-
-bin/.metadata/.mylyn/.taskListIndex/segments_1
-
-*.gen
-
-*.zip
-
-*.c
-
-bin/.metadata/.plugins/org.eclipse.cdt.core/.log
-
-*.tree
-
-*.xmi
