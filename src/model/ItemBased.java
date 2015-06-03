@@ -1,10 +1,5 @@
 package model;
 
-import java.io.IOException;
-
-import reader.ConfigReader;
-import reader.DataProcessor;
-import entity.AverageEntity;
 import entity.Record;
 import entity.RecordContainer;
 
