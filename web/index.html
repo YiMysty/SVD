@@ -16,15 +16,16 @@
 		<div id="home" class="header">
 			<div class="navbar-wrapper" style="width:100%;">
       			<div class="navwrapper" style="width:100%;">
-        			<div class="navbar-inverse navbar-static-top">
-          				<div class="container">
+        			<div class="navbar-inverse navbar-static-top" >
+          				<div class="container" style="text-align:center;margin:0 auto;">
             				<div class="navbar-header">
               					<a class="navbar-brand" href="#">Movie Box</a>
             				</div>
 	            			<div class="navbar-collapse collapse">
 	              				<ul class="nav navbar-nav">
 	                				<li class="menuItem"><a href="#aboutproject" class="anchor">About Project</a></li>
-	                				<li class="menuItem"><a href="#ourwork" class="anchor">Our Work</a></li>
+	                				<li class="menuItem"><a href="#ourwork" class="anchor">Implemention</a></li>
+	                				<li class="menuItem"><a href="#performance" class="anchor">Performance</a></li>
 	                				<li class="menuItem"><a href="#contact" class="anchor">About Us</a></li>
 	             				 </ul>
 	            			</div>
@@ -52,22 +53,26 @@
 				<h2>ABOUT OUR PROJECT</h2>
 				<span></span>
 					<div class="col-md-6 aboutus-left">
+						<h3>What is our project?</h3>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+							Our task is to recommend favorite movies to users and compute the accuracy of our prediction based on the processed data that originated from Amazon movie websites. The Recommender Systems have become extremely common in recent years, and are applied in a variety of applications, especially on movies, music, news, books, to predict the preference that user would give to an item. It is great to implement it!
 						</p>
+						<h3>What is our data?</h3>
 						<p>
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+							The data set we have utilized currently have three attributes after processed - User ID, Item ID and Score to the movie rated by the user. For each attribute, there are approximately 1 million examples. Here we use the 10-folds cross validation method and the indicator result RMSE to measure the performance of our system. We randomly split the data we processed into ten folds, and use nine of them to train and the rest to test for ten times. 
 						</p>
+						<h3>What methods do we use?</h3>
 						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet., sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+							The main method in our recommend system is based on <strong>Matrix Factorization Model with method of singular value decomposition</strong>. The main idea is mainly like this: given the processed data, we transform it to a rating matrix. By applying the svd method, we decompose the rating matrix into two matrices: user matrix and item matrix. Next, we use these two matrices to predict the score for those movie that the user has not seen yet. Finally we choose the movie which will likely be rated a high score by the user and recommend to him or her.
 						</p>
 					</div>
 					<div class="col-md-6 aboutus-right">
 						<p>
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+							We also implemented the recommend system based on two tranditional methods that based on KNN: <strong>user-based recommendation</strong> and <strong>item-based recommendation</strong>.
 						</p>
+						<h3>How do we test the performance? </h3>
 						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+						We will use RSME to indicate the performance of our system.
 						</p>
 					</div>
 					<div class="clearfix"> </div>
@@ -75,202 +80,136 @@
 			</div>
 			<div class="quote text-center">
 				<div class="container">
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
+					<p>Great! so how to implement them?</p>
 				</div>
 			</div>
 			<div id="ourwork" class="works">
 				<div class="container">
-					<h2>OUR WORKS</h2>
+					<h2>IMPLEMENTIONS</h2>
 					<span>&nbsp;</span>
 				</div>
+				<br/>
 				<div class="partners">
-						<div class="sreen-gallery-cursual">
-							 <!-- requried-jsfiles-for owl -->
-							<link href="./css/owl.carousel.css" rel="stylesheet">
-							    <script src="./js/owl.carousel.js"></script>
-							        <script>
-							    $(document).ready(function() {
-							      $("#owl-demo").owlCarousel({
-							        items : 5,
-							        lazyLoad : true,
-							        autoPlay : true,
-							        navigation : true,
-							        navigationText :  false,
-							        pagination : false,
-							      });
-							    });
-							 </script>
-							 <!-- //requried-jsfiles-for owl -->
-							 <!-- start content_slider -->
-						<div class="container">
-						    <div id="owl-demo" class="owl-carousel">
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen1.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen2.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen3.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen4.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen5.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen1.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen2.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-					                <div class="item">
-					                	<img class="lazyOwl" data-src="./images/screen3.jpg" alt="screen-name">
-					                	<label>PROJECT TITLE</label>
-					                </div>
-				              </div>
-						</div>
-				</div>
 				<div class="project-grid">
 					<div class="container">
-					<img class="project-screen" src="./images/screen.jpg" title="name" />
+					<div class="col-md-12">
+					<h3>SVD </h3>
+						<p>
+							"Matrix factorization models map both users and items to a joint latent factor space of dimensionality f, such that user-item interactions are modeled as inner products in that space. Accordingly, each movie i is associated with a vector qi and each user u is associated with a vector pu, 
+							For a given item i, the elements of qi measure the extent to which the item possesses those factors. For a given user u, the elements of pu measure the extent of interest the user has in items that are high on the corresponding factors."<br/> 
+							<strong><br/>
+							<a href="resource/Recommender-Systems-[Netflix].pdf">Koren, Yehuda, Robert Bell, and Chris Volinsky. "Matrix factorization techniques for recommender systems." Computer 8 (2009): 30-37.</a></strong>
+
+							<br/>
+							<br/>
+							We will explain the model in a simple example. To make the model easy to understand, let's assume two users here: <strong>A</strong> and <strong>B</strong> and two movies here: <strong>Transformer </strong>and <strong>Rush hour</strong>. As for A, he perhaps prefers the fiction movie and less likes the action movie, thus A's preference's matrix may like the right top matrix. 
+							The movie transformer contains 	0.9 fiction and 0.2 action content, then A is likely rating transformer 0.9*0.7+0.2*0.2 = 0.67.<br/>
+							<br/>
+							<img class="project-screen" src="./images/a.jpg" width="1140px" title="name" />
+							<div class="clearfix"> </div>
+							<p>
+							Thus, the model can be denoted as:
+							</p>
+							<img class="project-screen" src="./images/formula.jpg" />
+							<div class="clearfix"> </div>
+							<p>
+								r is the rating matrix, q is the user vector, p is the item vector. we try minimize the difference between known rating matrix and p inner product with q. Here we added regularized model the lambda part to avoid the overfit situation.
+							</p>
+							<p>
+								To solve the model, two approaches are available. The first one is stochastic gradient decent and the second one is alternating least squares. In our project, we code the stochastic gradient decent to solve the problem, since the stochastic gradient decent method is easier and faster than ALS, though at some situation, ALS is better than stochastic gradient decent such as: when the system can use paralleliziation and etc.
+							</p>
+							<p>
+								At each iteration of gradient decent, we will update the user vector and item vector denoted by following equation:
+							</p>
+							<img class="project-screen" src="./images/formula2.jpg" />
+							<img class="project-screen" src="./images/formula3.jpg" />
+							<div class="clearfix"> </div>
+							<p>
+								The e here is the prediction error which is calculated by the origin score minus the prediction score.
+								Gama here is the learning rate. We try to tune up the difference value, and finally get a relative good one.
+								The performance can be find at <a href="#performance" class="anchor">performance</a> part.
+							</p>
+						</p>
+					</br>
+					<h3><b>Item-based Collaborative Filtering</b></h3>
+						<p>
+							Item-based Collaborative Filtering is a model-based algorithm for making recommendation. The algorithm first find the similarity between every items in the dataset. The similarity is calculated by one of the number of similarity measures. This model can predict the unrated items by comparing the similarity between that unrated item and other rated items of the user. 
+						</p>
+
+						<h4><b>Similarity between two items?</b></h4>
+						<p>
+							Similarity between two items is measured by all the users who have rated these two items: 
+
+						</p>
+					</div>
+					<div class="clearfix"> </div>
 					<div class="project-grid-info">
 						<div class="col-md-3 project-grid-info-left">
-							<h3>GIHUB CODE SITE:</h3>
-							<label><a href="#">https://github.com/YiMysty/SVD</a></label>
+							<h3>GIHUB SITE:</h3>
+							<label><a href="https://github.com/YiMysty/SVD">https://github.com/YiMysty/SVD</a></label>
 							<a class="sitedemo" href="https://github.com/YiMysty/SVD">VISIT SITE</a>
 						</div>
 						<div class="col-md-9 project-grid-info-left">
-							<h3><a href="#">PROJECT TITLE</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  Velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam uptatem.</p>
+							<h3><a href="#">How to import the project? </a></h3>
+							<p>1. download the whole file except the file in web folder from github.</p>
+							<p>2. New a project in the Eclipse.</p>
+							<p>3. Copy the file in src folder into the src folder in your new project.</p>
+							<p>4. Copy other files under the project folder.</p>
+							<p>5. Run Test.java</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			<div class="testmonials">
+			<div class="quote text-center">
 				<div class="container">
-					<h2>WHAT THEY SAY</h2>
-					<span> </span>
-				<div class="people-testmonials">
-					<script>
-						$(document).ready(function() {
-							$("#owl-demo1").owlCarousel({
-							    items : 1,
-							    lazyLoad : true,
-							    autoPlay : true,
-							    navigation : false,
-							    navigationText :  false,
-							    pagination : true,
-							});
-						});
-					</script>
-					<div id="owl-demo1" class="owl-carousel">
-					    <div class="item ">
-					        <p>
-					        	" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 	dolore magna aliqua. Ut enim ad minim veniam. "
-					        </p>
-					        <div class="test-people">
-					            <div class="test-people-pic">
-					               	<a href="#">
-					               		<img src="./images/test-people-pic.png" title="name" />
-					               	</a>
-					            </div>
-					            <div class="test-people-info">
-					               	<a href="#">Lily Barnes</a>
-					               		<small>Managing Director ABC Ltd.</small>
-					            </div>
-					             <div class="clearfix"> </div>
-					               		</div>
-									</div>
-									<div class="item ">
-					                	<p>" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "</p>
-					               		<div class="test-people">
-					               			<div class="test-people-pic">
-					               				<a href="#">
-					               					<img src="./images/test-people-pic.png" title="name" />
-					               				</a>
-					               			</div>
-					               			<div class="test-people-info">
-					               				<a href="#">Lily Barnes</a>
-					               				<small>Managing Director ABC Ltd.</small>
-					               			</div>
-					               			<div class="clearfix"> </div>
-					               		</div>
-									</div>
-									<div class="item ">
-					                	<p>" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "</p>
-					               		<div class="test-people">
-					               			<div class="test-people-pic">
-					               				<a href="#">
-					               					<img src="./images/test-people-pic.png" title="name" />
-					               				</a>
-					               			</div>
-					               			<div class="test-people-info">
-					               				<a href="#">Lily Barnes</a>
-					               				<small>Managing Director ABC Ltd.</small>
-					               			</div>
-					               			<div class="clearfix"> </div>
-					               		</div>
-									</div>
-									<div class="item ">
-					                	<p>" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "</p>
-					               		<div class="test-people">
-					               			<div class="test-people-pic">
-					               				<a href="#">
-					               					<img src="./images/test-people-pic.png" title="name" />
-					               				</a>
-					               			</div>
-					               			<div class="test-people-info">
-					               				<a href="#">Lily Barnes</a>
-					               				<small>Managing Director ABC Ltd.</small>
-					               			</div>
-					               			<div class="clearfix"> </div>
-					               		</div>
-									</div>
-									<div class="item ">
-					                	<p>" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "</p>
-					               		<div class="test-people">
-					               			<div class="test-people-pic">
-					               				<a href="#">
-					               					<img src="./images/test-people-pic.png" title="name" />
-					               				</a>
-					               			</div>
-					               			<div class="test-people-info">
-					               				<a href="#">Lily Barnes</a>
-					               				<small>Managing Director ABC Ltd.</small>
-					               			</div>
-					               			<div class="clearfix"> </div>
-					               		</div>
-									</div>
-									<div class="item ">
-					                	<p>" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "</p>
-					               		<div class="test-people">
-					               			<div class="test-people-pic">
-					               				<a href="#">
-					               					<img src="./images/test-people-pic.png" title="name" />
-					               				</a>
-					               			</div>
-					               			<div class="test-people-info">
-					               				<a href="#">Lily Barnes</a>
-					               				<small>Managing Director ABC Ltd.</small>
-					               			</div>
-					               			<div class="clearfix"> </div>
-					               		</div>
-									</div>
-				    </div>
+					<p>How well do they perform?</p>
 				</div>
 			</div>
+			<div id="performance" class="contact"> 
+				<div class="container">
+					<h2>10-CROSS VALIDATION</h2>
+					<span></span>
+					<h3><strong>SVD Based</strong></h3>
+					<p>We tuned up our parameter on learning rate and regulation factor, and get a relative good result.<br/></p>
+					<table class="table">
+						<tr>
+							<td>RSME/TURN</td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>0.98158</td>
+							<td>0.96639</td>
+							<td>0.98995</td>
+							<td>0.97669</td>
+							<td>0.96669</td>
+							<td>0.97912</td>
+							<td>0.99078</td>
+							<td>0.99178</td>
+							<td>0.99867</td>
+							<td>0.98343	</td>
+						</tr>
+					</table>
+					<p>
+						<strong>For comparison, Netflix system achieves RMSE = 0.9514 on its dataset with the same method.</strong>
+					</p>
+				</div>
+			</div>
+			<div class="quote text-center">
+				<div class="container">
+					<p>Questions?</p>
+				</div>
 			</div>
 			<div id="contact" class="contact"> 
 				<div class="container">
@@ -278,17 +217,25 @@
 					<span> </span>
 				<div class="contact-grids">
 					<div class="col-md-6 contact-left">
-						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>If you have any questions, please feel free to contact us.</p>
 						<div class="address">
-							<label>HOLLA@JOHNDOE.DEV</label>
-							<label>+1 (234) 5678901</label>
-							<label>715A CD58</label>
+							<label>YI Mingzi</label>
+							<label><a href="mailto:mingziyi2014@u.northwestern.edu">mingziyi2014@u.northwestern.edu</a></label>
 						</div>
 						<div class="clearfix"> </div>
 						<div class="address">
-							<label>CREATIVE BUILDING 58</label>
-							<label>3083 Romines Mill Road</label>
-							<label>Boston, MA 02201  </label>
+							<label>GUO Yifan</label>
+							<label><a href="mailto:yifanguo2015@u.northwestern.edu">yifanguo2015@u.northwestern.edu</a></label>
+						</div>
+						<div class="clearfix"> </div>
+						<div class="address">
+							<label>Min Hsiu Hsieh</label>
+							<label><a href="mailto:minhsiuhsieh2016@u.northwestern.edu">minhsiuhsieh2016@u.northwestern.edu</a></label>
+						</div>
+						<div class="clearfix"> </div>
+						<div class="address">
+							<label>WANG Bingyu</label>
+							<label><a href="mailto:bingyuwang91@gmail.com">bingyuwang91@gmail.com</a></label>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -296,7 +243,15 @@
 				</div>
 			</div>
 			</div>
-
+			<script type="text/javascript">
+				jQuery(
+					function($){
+						$(document).ready(
+							function(){
+								$('.navbar-wrapper').stickUp()
+						})
+					})
+			</script>
 			<div class="copy-right text-center">
 				<div class="container">
 					<p>EECS 349 FINAL PROJECT</p>
@@ -309,13 +264,5 @@
 				</div>
 			</div>
 	</body>
-	<script type="text/javascript">
-        jQuery(function($) {
-            $(document).ready( function() {
-               //enabling stickUp on the '.navbar-wrapper' class
-                $('.navbar-wrapper').stickUp();
-            });
-        });
-    </script>
 </html>
 
