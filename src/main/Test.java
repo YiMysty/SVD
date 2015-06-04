@@ -7,11 +7,12 @@ import train.Train;
 public class Test {
 	public static void main(String args[]) throws IOException{
 		//FOR SVM
-		Train train = new Train("SVM");
-		train.doCrossValidation();
+		
+		//Train train = new Train("SVM");
+		//train.doCrossValidation();
+		System.out.println("dsdsdsd");
 		//FOR ITEMBASED
 		Train train2 = new Train("ItemBased");
-		train2.doCrossValidation();
-
+		train2.doCrossValidation_Item();
 	}
 }

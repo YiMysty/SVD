@@ -1,10 +1,15 @@
 package model;
 
+import java.io.IOException;
+
+import reader.ConfigReader;
+import reader.DataProcessor;
+import entity.AverageEntity;
 import entity.Record;
 import entity.RecordContainer;
 
 public class ItemBased{
-	float[][] scoreMatrix;
+	public float[][] scoreMatrix;
 	float[][] similarityMatrix;
 	float threshold = 0.5f;
 	int UserNum=0;
@@ -28,6 +33,9 @@ public class ItemBased{
 	}
 	public void similarityMatrix(){
 		//built the similarity Matrix
+		System.out.println(MovieNum);
+		similarityMatrix=new float[MovieNum][MovieNum];
+		System.out.println(MovieNum);
 		float[] vec1;
 		float[] vec2;
 		float[] tempVec1;
@@ -48,7 +56,7 @@ public class ItemBased{
 				tempVec2=getCol(j);	
 				index=0;
 				//remove 0, make length of two array equal
-				for(int k=0;j<tempVec1.length;k++){
+				for(int k=0;k<tempVec1.length;k++){
 					if(tempVec1[k]!=0.0f && tempVec2[k]!=0.0f){
 						vec1[index]=tempVec1[k];
 						vec2[index]=tempVec2[k];
@@ -70,7 +78,7 @@ public class ItemBased{
 					for(int k=0;k<similarityMatrix[0].length;k++){ //find the similar item according to threshold;
 						if(similarityMatrix[j][k]>threshold && scoreMatrix[i][k]!=0.0f ){
 							weightedScoreSum+=similarityMatrix[j][k]*scoreMatrix[i][k]; //similarity(weight) * known score  
-							counter++;
+							counter+=similarityMatrix[j][k];
 						}
 					}
 					scoreMatrix[i][j]=weightedScoreSum/counter; //prediction!
@@ -79,6 +87,8 @@ public class ItemBased{
 				}
 			}
 		}
+		
+		
 	}
 	public float[] getCol(int x){
 		//Get xth column from scoreMatrix
@@ -89,7 +99,7 @@ public class ItemBased{
 			targetCol[i] = 0.0f;			
 		}
 		
-		for(int i=0;i<scoreMatrix[0].length;i++){
+		for(int i=0;i<scoreMatrix.length;i++){
 			targetCol[i]=scoreMatrix[i][x];
 		}
 
