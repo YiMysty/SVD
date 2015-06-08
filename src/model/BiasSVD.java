@@ -8,7 +8,7 @@ import entity.AverageEntity;
 import entity.Record;
 import entity.RecordContainer;
 
-public class BiasSVD {
+public class BiasSVD extends Model{
 	float[][] userMatrix;
 	float[][] movieMatrix;
 	float[][] scoreMatrix;

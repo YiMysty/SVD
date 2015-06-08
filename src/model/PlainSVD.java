@@ -7,7 +7,7 @@ import reader.DataProcessor;
 import entity.Record;
 import entity.RecordContainer;
 
-public class PlainSVD {
+public class PlainSVD extends Model{
 	float[][] userMatrix;
 	float[][] movieMatrix;
 	float[][] scoreMatrix;
