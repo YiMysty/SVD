@@ -11,6 +11,10 @@
 		<script type="text/javascript" src="./js/stickUp.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+		<style>
+		div.justify { text-align: justify}
+		div.justify > span { display: inline-block /* Opera */; padding-left: 100%; }
+		</style>
 	</head>
 	<body>
 		<div id="home" class="header">
@@ -92,7 +96,7 @@
 				<div class="partners">
 				<div class="project-grid">
 					<div class="container">
-					<div class="col-md-12">
+					<div class="col-md-12 justify">
 					<h3>SVD </h3>
 						<p>
 							"Matrix factorization models map both users and items to a joint latent factor space of dimensionality f, such that user-item interactions are modeled as inner products in that space. Accordingly, each movie i is associated with a vector qi and each user u is associated with a vector pu, 
@@ -141,6 +145,79 @@
 							Similarity between two items is measured by all the users who have rated these two items: 
 
 						</p>
+
+					<h3><b>User-based Collaborative Filtering</b></h3>
+						<p>
+							User-based Collaborative Filtering is a model-based algorihtm for making recommendation. It can be divided into three steps: data representation, forming the neightbors of target user and producing the recommendations. 
+						</p>
+
+						<OL>	
+						<LI><h4><b>
+							Data representations
+						</h4></b></LI>
+							<p>
+								In a typical user-based movies recommendation systems, user input data is a collection of reviews of movies, and usually can be represented as a m * n user movies matrix as R. 
+							</p>
+							<p>
+								Each user is represented by item-rating pairs, and can be summarized in a user-item table, which contains the ratings Rij that have been provided by the ith user for the jth item, the table as following. 
+							</p>
+							<div align="center">
+								<img src="./images/UserBased/UserBased_ratingTable.png" width="50%" />
+							</div>
+							<p>
+								Where Rij denotes the rating of item Ij rated by a user Ui. If user Ui has not rated item Ij, then Rij =0. The symbol m denotes the total number of users, and n denotes the total number of items.
+							</p>
+
+						<LI><h4><b>
+							Forming Neighbors
+						</h4></b></LI>
+							<p>
+								User-based recommendation system, the most important step is to target users based on similarity calculation of neighbor users. The main objective of the formation of a neighbor, for a user u, to find an orderly queue l users N = {N1, N2, ... , Nl}, makes the sim (u, N1) of the value of the maximum, sim (u, N2) the value of the second, and so on.  Choosing a proper similarity method can obviously improve the performance of user-based CF. The three basic similarity methods are as follows: 
+							<UL TYPE="DISK">
+								<LI><b>Cosine Similarity</b> In this case, two users are regarded as two vectors in the n dimensional item space. The similarity between them is measured by computing the cosine of the angle between these two vectors. Formally, similarity between users i and j is given by 
+									<div align="center">
+										<img src="./images/UserBased/UserBased_Formula_Cosine.png" width="40%" />
+									</div>
+									<p>
+										where I J, represent the n dimensional vectors that users i and j rated on the n items; Item represents the whole items; Ric Rjc denote the ratings user i and j on the item c . 
+									</p>
+								<LI><b>Adjusted Cosine Similarity</b> Basic cosine measure has one important drawback that the differences in rating scale between different users are not taken into account. The adjusted cosine similarity offsets this drawback by subtracting the corresponding user average rating from each co-rated pair. Formally, the similarity between user i and j is given by 
+									<div align="center">
+										<img src="./images/UserBased/UserBased_Formula_CosineAdjusted.png" width="40%" />
+									</div>
+									<p>
+										where Iij represents the items that user i and j co-rated; ~Ri, ~Rj denote the average rating of user i and j.
+									</p>
+								<LI><b>Pearson's Collection Similarity </b>In this case, similarity between users i and j is measured by computing the Pearson correlation. To make the correlation computation accurate we isolate the co-rated cases. The correlation similarity is given by 
+									<div align="center">
+										<img src="./images/UserBased/UserBased_Formula_Pearson.png" width="40%" />
+									</div>
+							</UL>
+							</p>	
+
+						<LI><h4><b>
+							Prediction
+						</h4></b></LI>
+							<p>
+								we compute a prediction of the target user's rating to an item from a combination of the selected neighbors' ratings. The prediction formula is as follows: 
+							</p>
+							<div align="center">
+								<img src="./images/UserBased/UserBased_Formula_Prediction.png" width="35%" />
+							</div>
+
+						<LI><h4><b>
+							Result and analysis
+						</h4></b></LI>
+							<p>
+								To be continued
+							</p>
+						</OL>
+						
+
+						
+
+
+
 					</div>
 					<div class="clearfix"> </div>
 					<div class="project-grid-info">
@@ -235,7 +312,7 @@
 						<div class="clearfix"> </div>
 						<div class="address">
 							<label>WANG Bingyu</label>
-							<label><a href="mailto:bingyuwang91@gmail.com">bingyuwang91@gmail.com</a></label>
+							<label><a href="mailto:bingyuwang2014@u.northwestern.edu">bingyuwang2014@u.northwestern.edu</a></label>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
