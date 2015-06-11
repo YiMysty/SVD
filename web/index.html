@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<div id="home" class="header">
-			<div class="navbar-wrapper" style="width:100%;">
+			<div class="navbar-wrapper" style="width:100%;z-index:1000">
       			<div class="navwrapper" style="width:100%;">
         			<div class="navbar-inverse navbar-static-top" >
           				<div class="container" style="text-align:center;margin:0 auto;">
@@ -139,10 +139,34 @@
 						<p>
 							Item-based Collaborative Filtering is a model-based algorithm for making recommendation. The algorithm first find the similarity between every items in the dataset. The similarity is calculated by one of the number of similarity measures. This model can predict the unrated items by comparing the similarity between that unrated item and other rated items of the user. 
 						</p>
-
+						<h4><b>Get data, store them in Matrix!</b></h4>
+						Fisrt, this matrix record the rate for every items from every user.
+						</br>
+						<img class="project-screen" src="./images/itembaseori.jpg" style="width:228px;height:228px;" /> 
+						<div>
+							*User 2 rates item i 3 and rate item j 5
+							</br>
+							*? is what we are going to prodict
+							</br>
+							</div>
 						<h4><b>Similarity between two items?</b></h4>
 						<p>
-							Similarity between two items is measured by all the users who have rated these two items: 
+							Similarity between two items is measured by all the users who have rated these two items, using Cosin-based similarity.
+							</br>
+							matrix record that rate foor every items from every user.
+							</br>
+							</br>
+							<img class="project-screen" src="./images/itembase.jpg" style="width:228px;height:228px;" /> 
+							</br>
+							For example, User 2 rates item i 3 and rate item j 5. To comput the similarity between item i and j, we choose pair (3,2,2,3) and (5,1,5,2), calculating Cosin-based similarity using:
+							<img class="project-screen" src="./images/similarity.jpg" style="width:260px;height:50px;" /> 
+							</br>
+							Then, store the similarity value between every two item in a similarity matrix called <b>s</b>.
+						<h4><b>How to predict the unrated value?</b></h4>
+							Once we make a model using similarity measures function, we can predict the rating for any user-item pair by using the idea of weighted sum. First we take all the items similar to our target item, and from those similar items, we pick items which the active user has rated. We weight the user's rating for each of these items by the similarity between that and the target item. Finally, we scale the prediction by the sum of similarities to get a reasonable value for the predicted rating:
+						</br>
+						<img class="project-screen" src="./images/predict.jpg" style="width:260px;height:70px;" /> 
+
 
 						</p>
 
@@ -280,6 +304,39 @@
 					</table>
 					<p>
 						<strong>For comparison, Netflix system achieves RMSE = 0.9514 on its dataset with the same method.</strong>
+					</p>
+
+					<h3><strong>Item Based</strong></h3>
+					<p>We use Consin-Based Similarity to calcualte our similarity.<br/></p>
+					<table class="table">
+						<tr>
+							<td>RSME/TURN</td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>0.932</td>
+							<td>0.974</td>
+							<td>0.953</td>
+							<td>0.946</td>
+							<td>0.952</td>
+							<td>0.931</td>
+							<td>0.932</td>
+							<td>0.961</td>
+							<td>0.92</td>
+							<td>0.9</td>
+						</tr>
+					</table>
+					<p>
 					</p>
 				</div>
 			</div>

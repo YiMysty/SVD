@@ -7,20 +7,16 @@ import entity.RecordContainer;
 import reader.ConfigReader;
 import reader.DataProcessor;
 import tools.FoldsTools;
+import model.Model;
 import model.PlainSVD;
 import model.ItemBased;
 
 public class Train {
-	PlainSVD svdmodel;
 	ItemBased itembase;
-	public Train(String method){
-		if(method=="SVM"){
-			svdmodel = new PlainSVD();
-			svdmodel.loadData(null);
-		}else if(method=="ItemBased"){
-			//itembase = new ItemBased();
-			//itembase.loadData(null);
-		}
+	Model svdmodel; 
+	public Train(){
+		svdmodel = new PlainSVD();
+		svdmodel.loadData(null);
 	}
 	public void doTrain(){
 		System.out.println("Start do training.....");

@@ -12,7 +12,7 @@ public class Test {
 		//train.doCrossValidation();
 		System.out.println("dsdsdsd");
 		//FOR ITEMBASED
-		Train train2 = new Train("ItemBased");
+		Train train2 = new Train();
 		train2.doCrossValidation_Item();
 	}
 }
